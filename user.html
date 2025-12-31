@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>User Login</h1>
+
+<div id="loginBox">
+  <input type="text" id="userUsername" placeholder="Username">
+  <input type="password" id="userPassword" placeholder="Password">
+  <button onclick="userLogin()">Login</button>
+  <p style="text-align: center; margin-top: 15px;">
+    <a href="index.html" style="color: #1d3557;">Back to Home</a> | 
+    <a href="admin.html" style="color: #1d3557;">Admin Login</a>
+  </p>
+</div>
+
+<div id="userPanel" class="hidden">
+  <button class="find-btn" onclick="goToDonorPage()">Find Donor</button>
+</div>
+
+<script src="user.js"></script>
+</body>
+</html>
+

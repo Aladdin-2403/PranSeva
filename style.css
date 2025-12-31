@@ -1,0 +1,926 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #ffe5e9 0, #f5f7fb 45%, #edf2f7 100%);
+  color: #1d3557;
+  min-height: 100vh;
+}
+
+body > h1 {
+  margin-top: 60px;
+  margin-bottom: 30px;
+}
+
+#donorContent {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #b10024; /* deep blood red */
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px auto 24px;
+  max-width: 900px;
+}
+
+select, input, button {
+  padding: 9px 12px;
+  margin: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccd3e0;
+  font-size: 14px;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+  border-color: #e63946;
+  box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.25);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0;
+}
+
+.form-section {
+  overflow-x: auto;
+}
+
+th, td {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 14px 12px;
+  text-align: center;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+td {
+  color: #374151;
+}
+
+th {
+  white-space: nowrap;
+}
+
+th {
+  background: linear-gradient(90deg, #b10024, #e63946);
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+tr:nth-child(even) td {
+  background-color: #fafafa;
+}
+
+tr:hover td {
+  background-color: #fff5f6;
+}
+
+button {
+  background: #e63946;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 7px 14px;
+  font-weight: 600;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s ease;
+}
+
+button:hover {
+  background: #c92d3a;
+  box-shadow: 0 4px 10px rgba(185, 28, 28, 0.35);
+  transform: translateY(-1px);
+}
+
+.hidden {
+  display: none;
+}
+
+#loginBox {
+  max-width: 460px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 22px 24px;
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.16);
+  border-top: 4px solid #e63946;
+}
+
+#adminPanel, #userPanel {
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 30px;
+  background: transparent;
+}
+.top-bar {
+  position: fixed;
+  top: 14px;
+  left: 24px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.admin-btn {
+  text-decoration: none;
+  background: #e63946;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+  box-shadow: 0 6px 14px rgba(185, 28, 28, 0.35);
+}
+
+.admin-btn:hover {
+  background: #c92d3a;
+}
+td button {
+  background: #e63946;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+td button:hover {
+  background: #c92d3a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(185, 28, 28, 0.3);
+}
+.find-btn:hover {
+  background: #223b71;
+  box-shadow: 0 4px 12px rgba(29, 53, 87, 0.3);
+  transform: translateY(-1px);
+}
+
+.login-prompt {
+  max-width: 500px;
+  margin: 100px auto;
+  text-align: center;
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.18);
+  border-top: 5px solid #e63946;
+}
+
+.login-prompt h1 {
+  color: #1d3557;
+  margin-bottom: 20px;
+}
+
+.login-prompt p {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.no-data {
+  text-align: center;
+  color: #e63946;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+#adminPanel h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 24px;
+  color: #b10024;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ffe5e9;
+}
+
+#adminPanel .form-section {
+  margin-bottom: 30px;
+}
+
+#adminPanel .form-section:last-child {
+  margin-bottom: 0;
+}
+
+#adminPanel table {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+
+#adminPanel label {
+  color: #1d3557;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Form Section Styling */
+#adminPanel > h2 + input,
+#adminPanel > h2 + label,
+#adminPanel > h2 + select {
+  margin-top: 0;
+}
+
+.form-section {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+  margin-bottom: 30px;
+  border-top: 4px solid #e63946;
+}
+
+#adminPanel input[type="text"],
+#adminPanel input[type="number"],
+#adminPanel input[type="email"],
+#adminPanel select {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 2px solid #e5e7eb;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#adminPanel input[type="text"]:focus,
+#adminPanel input[type="number"]:focus,
+#adminPanel input[type="email"]:focus,
+#adminPanel select:focus {
+  outline: none;
+  border-color: #e63946;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+}
+
+#adminPanel button[onclick="addDonor()"] {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.find-btn {
+  background: #1d3557;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  width: auto;
+  display: inline-block;
+  margin: 0;
+}
+
+.check-request-btn {
+  background: #e63946;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+  margin: 0;
+}
+
+.check-request-btn:hover {
+  background: #c92d3a;
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Modal Styles */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border-top: 4px solid #e63946;
+  position: relative;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.close-modal {
+  color: #999;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  transition: color 0.2s;
+}
+
+.close-modal:hover {
+  color: #e63946;
+}
+
+.modal-content h2 {
+  color: #b10024;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="email"],
+.modal-content textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.modal-content input[type="text"]:focus,
+.modal-content input[type="email"]:focus,
+.modal-content textarea:focus {
+  outline: none;
+  border-color: #e63946;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+}
+
+.modal-content textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.submit-btn {
+  flex: 1;
+  background: #e63946;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.submit-btn:hover {
+  background: #c92d3a;
+  transform: translateY(-1px);
+}
+
+.cancel-btn {
+  flex: 1;
+  background: #6b7280;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cancel-btn:hover {
+  background: #4b5563;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #adminPanel {
+    padding: 15px;
+  }
+  
+  .filters {
+    flex-direction: column;
+  }
+  
+  .filters select {
+    width: 100%;
+  }
+  
+  table {
+    font-size: 12px;
+  }
+  
+  th, td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+  
+  .top-bar {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e63946;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c92d3a;
+}
+/* Blood Group Styling */
+.blood-group-option {
+  position: relative;
+  padding-left: 30px;
+}
+
+.blood-group-option::before {
+  content: "🩸";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1em;
+}
+
+/* Organ Type Styling */
+.organ-type-option {
+  position: relative;
+  padding-left: 35px;
+}
+
+.organ-type-option::before {
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1em;
+}
+
+/* Specific organ emojis */
+.organ-type-option[value="kidney"]::before { content: "🫀"; }
+.organ-type-option[value="liver"]::before { content: "🧠"; }
+.organ-type-option[value="heart"]::before { content: "❤️"; }
+.organ-type-option[value="lungs"]::before { content: "👃"; }
+.organ-type-option[value="pancreas"]::before { content: "🍞"; }
+.organ-type-option[value="intestines"]::before { content: "🍽️"; }
+.organ-type-option[value="cornea"]::before { content: "👁️"; }
+.organ-type-option[value="skin"]::before { content: "✋"; }
+.organ-type-option[value="bone"]::before { content: "🦴"; }
+
+/* Dropdown Styling */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23e63946%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%;
+  background-size: 0.65em auto;
+  padding-right: 2.5em;
+}
+
+/* Donation Type Toggle Styling */
+.donation-toggle {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  background: #fff;
+  border-radius: 50px;
+  padding: 5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.donation-toggle input[type="radio"] {
+  display: none;
+}
+
+.donation-toggle label {
+  flex: 1;
+  text-align: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.donation-toggle label:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ffe5e9 0%, #ffcdd2 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.donation-toggle input[type="radio"]:checked + label {
+  color: #b10024;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(230, 57, 70, 0.2);
+}
+
+.donation-toggle input[type="radio"]:checked + label:before {
+  opacity: 1;
+}
+
+.donation-toggle label:first-of-type {
+  margin-right: 5px;
+}
+
+/* Form Section Styling */
+.form-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 10px 30px rgba(230, 57, 70, 0.1);
+  border-top: 4px solid #e63946;
+  position: relative;
+  overflow: hidden;
+}
+
+.form-section:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #b10024, #e63946);
+}
+
+/* Input Field Styling */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+select:focus {
+  border-color: #e63946;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+  outline: none;
+  background-color: #fff;
+}
+
+/* Button Styling */
+button[type="submit"] {
+  background: linear-gradient(135deg, #e63946 0%, #b10024 100%);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 25px auto 0;
+  box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .donation-toggle {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  
+  .donation-toggle label {
+    margin: 5px 0;
+  }
+  
+  .form-section {
+    padding: 20px 15px;
+  }
+}/* Login Box Styling */
+#loginBox {
+  max-width: 400px;
+  width: 90%;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #e63946;
+  margin: 40px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+#loginBox::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #e63946, #ff6b6b);
+}
+
+/* Input Field Styling */
+#loginBox input[type="text"],
+#loginBox input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  margin: 8px 0 20px;
+  border: 2px solid #e1e5ee;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+  box-sizing: border-box;
+}
+
+#loginBox input[type="text"]:focus,
+#loginBox input[type="password"]:focus {
+  border-color: #e63946;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+  outline: none;
+  background-color: #fff;
+}
+
+/* Button Styling */
+#loginBox button {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #e63946, #ff6b6b);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#loginBox button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+}
+
+/* Link Styling */
+#loginBox .links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+}
+
+#loginBox .links a {
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  position: relative;
+  padding: 5px 0;
+}
+
+#loginBox .links a:hover {
+  color: #e63946;
+}
+
+#loginBox .links a:first-child::after {
+  content: "|";
+  margin: 0 10px;
+  color: #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  #loginBox {
+    padding: 30px 20px;
+    margin: 20px auto;
+  }
+  
+  #loginBox input[type="text"],
+  #loginBox input[type="password"] {
+    padding: 12px 14px;
+  }
+  
+  #loginBox button {
+    padding: 12px;
+  }
+}/* ===============================
+   CENTER USER PANEL BUTTON
+================================ */
+#userPanel {
+  position: fixed;
+  inset: 0;                     /* top, right, bottom, left = 0 */
+  display: flex;
+  align-items: center;          /* vertical center */
+  justify-content: center;      /* horizontal center */
+  background: transparent;
+  z-index: 5;
+}
+
+/* Keep button size natural */
+#userPanel .find-btn {
+  font-size: 18px;
+  padding: 16px 32px;
+}/* Add these styles to your style.css file */
+
+/* Hidden class for toggling visibility */
+.hidden {
+  display: none !important;
+}
+
+/* Login Box Styling */
+#loginBox {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #e63946;
+}
+
+#loginBox input[type="text"],
+#loginBox input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+#loginBox input[type="text"]:focus,
+#loginBox input[type="password"]:focus {
+  outline: none;
+  border-color: #e63946;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+}
+
+#loginBox button {
+  width: 100%;
+  padding: 12px;
+  background: #e63946;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#loginBox button:hover {
+  background: #c92d3a;
+  transform: translateY(-2px);
+}
+
+/* User Panel Styling */
+#userPanel {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.find-btn {
+  background: #1d3557;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(29, 53, 87, 0.2);
+}
+
+.find-btn:hover {
+  background: #142847;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29, 53, 87, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  #loginBox {
+    margin: 20px 15px;
+    padding: 20px;
+  }
+  
+  #loginBox input[type="text"],
+  #loginBox input[type="password"] {
+    padding: 10px 12px;
+  }
+  
+  #loginBox button {
+    padding: 12px;
+  }
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blood & Organ Donor Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div id="loginPrompt" class="login-prompt">
+  <h1>Welcome to Blood & Organ Donor Portal</h1>
+  <p>Please login to view donor information</p>
+  <a href="user.html" class="admin-btn" style="display: inline-block; margin-top: 20px;">User Login</a>
+  <a href="admin.html" class="admin-btn" style="display: inline-block; margin-top: 20px;">Admin Login</a>
+
+</div>
+
+<div id="donorContent" class="hidden">
+  <h1>Blood & Organ Donor Information</h1>
+
+  <div class="filters">
+    <select id="filterLocation">
+      <option value="">All Locations</option>
+    </select>
+
+    <select id="filterType">
+      <option value="">All Types</option>
+      <option value="blood">Blood</option>
+      <option value="organ">Organ</option>
+    </select>
+
+    <select id="filterBlood">
+      <option value="">All Blood Groups</option>
+    </select>
+
+    <select id="filterOrgan">
+      <option value="">All Organs</option>
+    </select>
+  </div>
+<!-- Donation Type Toggle -->
+<div class="donation-toggle">
+  <input type="radio" id="bloodDonor" name="donationType" value="blood" checked>
+  <label for="bloodDonor">🩸 Blood Donation</label>
+  
+  <input type="radio" id="organDonor" name="donationType" value="organ">
+  <label for="organDonor">💉 Organ Donation</label>
+</div>
+
+<!-- Blood Group Dropdown -->
+<select id="bloodGroup" class="blood-group-select">
+  <option value="">Select Blood Group</option>
+  <option value="A+" class="blood-group-option">A+</option>
+  <option value="A-" class="blood-group-option">A-</option>
+  <option value="B+" class="blood-group-option">B+</option>
+  <option value="B-" class="blood-group-option">B-</option>
+  <option value="AB+" class="blood-group-option">AB+</option>
+  <option value="AB-" class="blood-group-option">AB-</option>
+  <option value="O+" class="blood-group-option">O+</option>
+  <option value="O-" class="blood-group-option">O-</option>
+</select>
+
+<!-- Organ Type Dropdown -->
+<select id="organType" class="organ-type-select" style="display: none;">
+  <option value="">Select Organ Type</option>
+  <option value="kidney" class="organ-type-option">Kidney</option>
+  <option value="liver" class="organ-type-option">Liver</option>
+  <option value="heart" class="organ-type-option">Heart</option>
+  <option value="lungs" class="organ-type-option">Lungs</option>
+  <option value="pancreas" class="organ-type-option">Pancreas</option>
+  <option value="intestines" class="organ-type-option">Intestines</option>
+  <option value="cornea" class="organ-type-option">Cornea</option>
+  <option value="skin" class="organ-type-option">Skin</option>
+  <option value="bone" class="organ-type-option">Bone Marrow</option>
+</select>
+  <table>
+    <thead>
+      <tr id="tableHeader">
+        <th>Name</th>
+        <th>Age</th>
+        <th>Type</th>
+        <th>Blood Group</th>
+        <th>Organ</th>
+        <th>Location</th>
+        <th>Contact</th>
+        <th>Availability</th>
+        <th class="action-header">Action</th>
+      </tr>
+    </thead>
+    <tbody id="donorTable"></tbody>
+  </table>
+  <p id="noDataMsg" class="hidden no-data">
+    Sorry, No Donor Found
+  </p>
+</div>
+
+<!-- Contact Hospital Modal -->
+<div id="contactModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeContactModal()">&times;</span>
+    <h2>Contact Hospital</h2>
+    <p id="donorInfo" style="color: #666; margin-bottom: 20px;"></p>
+    <form id="contactForm" onsubmit="submitContactForm(event)">
+      <input type="text" id="userContact" placeholder="Your Contact Number" required>
+      <input type="email" id="userEmail" placeholder="Your Email ID" required>
+      <textarea id="requirement" placeholder="Please describe your requirement (e.g., Need O+ blood for emergency surgery)" rows="4" required></textarea>
+      <div class="modal-buttons">
+        <button type="submit" class="submit-btn">Submit Request</button>
+        <button type="button" class="cancel-btn" onclick="closeContactModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

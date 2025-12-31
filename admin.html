@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Admin Login</h1>
+
+<div id="loginBox">
+  <input type="text" id="adminUser" placeholder="Username">
+  <input type="password" id="adminPass" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <p style="text-align: center; margin-top: 15px;">
+    <a href="index.html" style="color: #1d3557;">Back to Home</a> | 
+    <a href="user.html" style="color: #1d3557;">User Login</a>
+  </p>
+</div>
+
+<div id="adminPanel" class="hidden">
+
+  <div class="button-group">
+    <button class="find-btn" onclick="goToUserPage()">Find Donor</button>
+    <button class="check-request-btn" onclick="checkRequests()">Check Requests</button>
+  </div>
+
+  <div class="form-section">
+    <h2>Add Donor Data</h2>
+
+    <input type="text" id="name" placeholder="Name">
+    <input type="number" id="age" placeholder="Age">
+    
+    <label>Donation Type:</label>
+    <select id="donationType" onchange="toggleDonationFields()">
+      <option value="blood">Blood</option>
+      <option value="organ">Organ</option>
+    </select>
+    
+    <select id="blood">
+      <option value="">Select Blood Group</option>
+      <option value="A+">A+</option>
+      <option value="A-">A-</option>
+      <option value="B+">B+</option>
+      <option value="B-">B-</option>
+      <option value="AB+">AB+</option>
+      <option value="AB-">AB-</option>
+      <option value="O+">O+</option>
+      <option value="O-">O-</option>
+    </select>
+    
+    <input type="text" id="organ" placeholder="Organ (e.g., Kidney, Liver, Heart)" class="hidden">
+    
+    <input type="text" id="location" placeholder="Location">
+    <input type="text" id="contact" placeholder="Contact Number">
+    <select id="available">
+      <option value="yes">Available</option>
+      <option value="no">Not Available</option>
+    </select>
+
+    <button onclick="addDonor()">Add Donor</button>
+  </div>
+
+  <div class="form-section">
+    <h2>Manage Donors</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Type</th>
+          <th>Blood Group</th>
+          <th>Organ</th>
+          <th>Location</th>
+          <th>Contact</th>
+          <th>Availability</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="adminTable"></tbody>
+    </table>
+  </div>
+
+  <div class="form-section">
+    <h2>User Requests</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Requested By</th>
+          <th>User Contact</th>
+          <th>User Email</th>
+          <th>Requirement</th>
+          <th>Donor</th>
+          <th>Type</th>
+          <th>Blood/Organ</th>
+          <th>Donor Location</th>
+          <th>Donor Contact</th>
+          <th>Time</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="requestTable"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
